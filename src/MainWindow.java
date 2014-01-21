@@ -26,19 +26,21 @@ public class MainWindow {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                char[] pw=pw_mysqlpw.getPassword();
-                String str_pw = new String(pw);
-                String user=tb_mysqluser.getText();
-                db =new DataConnection(user,str_pw,"javatest");
-                db_thread=new Thread(db);
-
                 try{
+                    char[] pw=pw_mysqlpw.getPassword();
+                    String str_pw = new String(pw);
+                    String user=tb_mysqluser.getText();
+                    db =new DataConnection(user,str_pw,"javatest");
+                    db_thread=new Thread(db);
                     db_thread.start();
                 }
                 catch(IllegalThreadStateException e) {
                     System.err.println("Caught: "+e.toString());
                     System.err.println("Thread state: "+db_thread.getState());
                     System.err.println("Ignoring command.");
+                }
+                catch(Exception e){
+                    System.err.println("Caught: "+e.toString());
                 }
             }
         });

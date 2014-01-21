@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51214c3c-eaf4-4d75-8d5a-5b4c54c45e8d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataConnection.java" afterPath="$PROJECT_DIR$/src/DataConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainWindow.java" afterPath="$PROJECT_DIR$/src/MainWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -68,13 +67,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainWindow.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+            <state line="44" column="0" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.8043011" vertical-offset="0" max-vertical-offset="1071">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#628#1379#0" expanded="true" />
+                <element signature="e#628#1517#0" expanded="true" />
+                <element signature="e#1506#1507#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,10 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataConnection.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.40215054" vertical-offset="0" max-vertical-offset="935">
+            <state line="22" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -412,7 +412,11 @@
       <created>1390347715754</created>
       <updated>1390347715754</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Threadded the connection method">
+      <created>1390348532906</created>
+      <updated>1390348532906</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -459,7 +463,8 @@
     </option>
     <MESSAGE value="Added MySQL dump of test database" />
     <MESSAGE value="Connection to database with button press" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connection to database with button press" />
+    <MESSAGE value="Threadded the connection method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Threadded the connection method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -474,7 +479,8 @@
         <state line="20" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="748">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#628#1379#0" expanded="true" />
+            <element signature="e#628#1517#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -498,7 +504,8 @@
         <state line="20" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#628#1379#0" expanded="true" />
+            <element signature="e#628#1517#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -522,7 +529,8 @@
         <state line="9" column="4" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="510">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#628#1379#0" expanded="true" />
+            <element signature="e#628#1517#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -537,7 +545,8 @@
         <state line="9" column="4" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#628#1379#0" expanded="true" />
+            <element signature="e#628#1517#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -552,6 +561,15 @@
         <state line="1" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -559,19 +577,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+        <state line="44" column="0" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.8043011" vertical-offset="0" max-vertical-offset="1071">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#628#1379#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="465" selection-end="465" vertical-scroll-proportion="0.40215054" vertical-offset="0" max-vertical-offset="935">
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#628#1517#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
           </folding>
         </state>
       </provider>
