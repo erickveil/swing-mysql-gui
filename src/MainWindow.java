@@ -17,28 +17,29 @@ public class MainWindow {
     private JButton bu_connect;
     private JButton searchButton;
 
+    private DataConnection db;
+    private Thread db_thread;
+
     public MainWindow(){
 
         bu_connect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
                 char[] pw=pw_mysqlpw.getPassword();
                 String str_pw = new String(pw);
-
                 String user=tb_mysqluser.getText();
-                DataConnection db =new DataConnection(user,str_pw,"javatest");
+                db =new DataConnection(user,str_pw,"javatest");
+                db_thread=new Thread(db);
 
                 try{
-                    db.connectDB();
+                    db_thread.start();
                 }
-                catch(Exception e){
-                    System.err.println(e.toString());
-                    System.err.println(e.getMessage());
-                    System.err.println(e.getCause());
-                    e.printStackTrace();
-                    return;
+                catch(IllegalThreadStateException e) {
+                    System.err.println("Caught: "+e.toString());
+                    System.err.println("Thread state: "+db_thread.getState());
+                    System.err.println("Ignoring command.");
                 }
-                System.out.println("Database connected.");
             }
         });
     }

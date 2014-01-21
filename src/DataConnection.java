@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 /**
  * Created by eveil on 1/21/14.
  */
-public class DataConnection {
+public class DataConnection implements Runnable{
 
     private String user;
     private String password;
@@ -18,6 +18,18 @@ public class DataConnection {
         database=p_database;
     }
 
+    public void run()
+    {
+        try{
+            connectDB();
+        }
+        catch(Exception e){
+            System.err.println(e.toString());
+            return;
+        }
+        System.out.println("Database connected.");
+    }
+
     /**
      * Get the connector from:
      * http://dev.mysql.com/downloads/connector/j
@@ -28,5 +40,10 @@ public class DataConnection {
     {
         Class.forName("com.mysql.jdbc.Driver");
         connect= DriverManager.getConnection("jdbc:mysql://localhost/"+database+"?user="+user+"&password="+password);
+    }
+
+    public void searchByCity()
+    {
+
     }
 }
