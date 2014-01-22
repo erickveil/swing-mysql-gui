@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51214c3c-eaf4-4d75-8d5a-5b4c54c45e8d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CitySearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataConnection.java" afterPath="$PROJECT_DIR$/src/DataConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainWindow.java" afterPath="$PROJECT_DIR$/src/MainWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -72,10 +70,12 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="16" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.38848922" vertical-offset="540" max-vertical-offset="1458">
+            <state line="72" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="0.9496403" vertical-offset="864" max-vertical-offset="1386">
               <folding>
-                <element signature="e#1557#2512#0" expanded="true" />
-                <element signature="e#2501#2502#0" expanded="true" />
+                <element signature="e#645#1124#0" expanded="true" />
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1168#1701#0" expanded="true" />
+                <element signature="e#1686#1687#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -389,7 +389,11 @@
       <created>1390348532906</created>
       <updated>1390348532906</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working query process">
+      <created>1390421791328</created>
+      <updated>1390421791328</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -437,7 +441,8 @@
     <MESSAGE value="Added MySQL dump of test database" />
     <MESSAGE value="Connection to database with button press" />
     <MESSAGE value="Threadded the connection method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Threadded the connection method" />
+    <MESSAGE value="Working query process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working query process" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -451,8 +456,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="0" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="1134">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -482,8 +489,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="0" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1134">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -504,8 +513,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="748">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -526,8 +537,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -548,8 +561,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="4" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="510">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -563,8 +578,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="4" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -602,10 +619,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="16" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.38848922" vertical-offset="540" max-vertical-offset="1458">
+        <state line="72" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="0.9496403" vertical-offset="864" max-vertical-offset="1386">
           <folding>
-            <element signature="e#1557#2512#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>
