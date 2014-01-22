@@ -9,7 +9,8 @@ public class DataConnection implements Runnable{
     private String user;
     private String password;
     private String database;
-    private Connection connect;
+    public Connection connect;
+
 
     public DataConnection(String p_user, String p_password, String p_database)
     {
@@ -40,10 +41,5 @@ public class DataConnection implements Runnable{
     {
         Class.forName("com.mysql.jdbc.Driver");
         connect= DriverManager.getConnection("jdbc:mysql://localhost/"+database+"?user="+user+"&password="+password);
-    }
-
-    public void searchByCity()
-    {
-
     }
 }

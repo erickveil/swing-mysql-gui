@@ -44,6 +44,29 @@ public class MainWindow {
                 }
             }
         });
+
+        bu_search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    char[] pw=pw_mysqlpw.getPassword();
+                    String str_pw = new String(pw);
+                    String user=tb_mysqluser.getText();
+                    String search=tb_select_city.getText();
+                    db =new CitySearch(user,str_pw,"javatest",search,tb_result);
+                    db_thread=new Thread(db);
+                    db_thread.start();
+                }
+                catch(IllegalThreadStateException ex) {
+                    System.err.println("Caught: "+ex.toString());
+                    System.err.println("Thread state: "+db_thread.getState());
+                    System.err.println("Ignoring command.");
+                }
+                catch(Exception ex){
+                    System.err.println("Caught: "+ex.toString());
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
