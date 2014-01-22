@@ -11,7 +11,6 @@ public class DataConnection implements Runnable{
     private String database;
     public Connection connect;
 
-
     public DataConnection(String p_user, String p_password, String p_database)
     {
         user=p_user;
