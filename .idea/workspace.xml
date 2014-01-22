@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51214c3c-eaf4-4d75-8d5a-5b4c54c45e8d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainWindow.java" afterPath="$PROJECT_DIR$/src/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CitySearch.java" afterPath="$PROJECT_DIR$/src/CitySearch.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="swing-mysql-gui.iws" />
@@ -67,10 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindow.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="0.9496403" vertical-offset="864" max-vertical-offset="1386">
+            <state line="28" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="1386">
               <folding>
                 <element signature="e#645#1124#0" expanded="true" />
                 <element signature="e#1109#1110#0" expanded="true" />
@@ -91,16 +91,16 @@
       <file leaf-file-name="DataConnection.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="10" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="918">
+            <state line="11" column="10" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="900">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CitySearch.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CitySearch.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CitySearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1300" selection-end="1300" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="954">
+            <state line="49" column="0" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.9496403" vertical-offset="486" max-vertical-offset="1008">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,8 +124,8 @@
         <option value="$PROJECT_DIR$/data/README" />
         <option value="$PROJECT_DIR$/src/MainWindow.form" />
         <option value="$PROJECT_DIR$/src/DataConnection.java" />
-        <option value="$PROJECT_DIR$/src/CitySearch.java" />
         <option value="$PROJECT_DIR$/src/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/CitySearch.java" />
       </list>
     </option>
   </component>
@@ -393,7 +393,11 @@
       <created>1390421791328</created>
       <updated>1390421791328</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="More encompasing exception handler">
+      <created>1390422250912</created>
+      <updated>1390422250912</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -442,7 +446,8 @@
     <MESSAGE value="Connection to database with button press" />
     <MESSAGE value="Threadded the connection method" />
     <MESSAGE value="Working query process" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working query process" />
+    <MESSAGE value="More encompasing exception handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="More encompasing exception handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -596,6 +601,23 @@
         <state line="1" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainWindow.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="1386">
+          <folding>
+            <element signature="e#645#1124#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1168#1701#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="10" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="900">
@@ -603,28 +625,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainWindow.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CitySearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1300" selection-end="1300" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="954">
+        <state line="49" column="0" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.9496403" vertical-offset="486" max-vertical-offset="1008">
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="0.9496403" vertical-offset="864" max-vertical-offset="1386">
-          <folding>
-            <element signature="e#645#1124#0" expanded="true" />
-            <element signature="e#1109#1110#0" expanded="true" />
-            <element signature="e#1168#1701#0" expanded="true" />
-            <element signature="e#1686#1687#0" expanded="true" />
           </folding>
         </state>
       </provider>

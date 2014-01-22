@@ -43,5 +43,8 @@ public class CitySearch extends DataConnection{
         }
 
         search_out.setText(((Integer)population).toString());
+        result.close();
+        statement.close();
+        connect.close();
     }
 }
