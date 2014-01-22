@@ -1,0 +1,40 @@
+swing-mysql-gui
+===============
+
+Demonstration of a GUI that connects Java with MySQL.
+
+To Build:
+
+Using IdeaJ 13.x
+
+Download jdbc connector at 
+
+http://dev.mysql.com/downloads/connector/j
+
+Clone this project, open in IdeaJ.
+
+In the Project tree, right click your jdk library under External Libraries.
+
+Open Library Settings from the dropdown.
+
+Press the + icon.
+
+Add a path to the jar file you downloaded for the jdbc.
+
+Click OK.
+
+Check to see if your MySQL server is running:
+
+sudo service mysqld status
+
+Run it if not:
+
+sudo service mysqld start
+
+Open a terminal and cd to this project, in the data directory.
+
+mysql -u root -p -e "create database javatest"
+mysql -u -p javatest < javatestdump.sql
+
+Now go back to IdeaJ and make MainWindow and run.
+
