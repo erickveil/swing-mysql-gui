@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -22,6 +23,16 @@ public class DataConnection implements Runnable{
     {
         try{
             connectDB();
+        }
+        catch(ClassNotFoundException ex){
+            String msg="ClassNotFound exception, likely caused from a " +
+                    "missing jdbc driver.\nDownload driver at http:dev.mysql" +
+                    ".com/downloads/connector/j\nIn the project tree, " +
+                    "right click your jdk library under External Libraries, " +
+                    "Open library settings, Press + and add a path to the " +
+                    "jar file for th jdbc.";
+            JOptionPane.showMessageDialog(null,msg,"No database connector " +
+                    "detected",JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){
             System.err.println(e.toString());
