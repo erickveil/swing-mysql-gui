@@ -1,4 +1,4 @@
-*.workspace.xml
+*workspace.xml
 *tasks.xml
 *.iws
 out/*
