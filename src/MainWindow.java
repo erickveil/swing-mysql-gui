@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by eveil on 1/14/14.
@@ -19,6 +21,10 @@ public class MainWindow {
 
     private DataConnection db;
     private Thread db_thread;
+
+    public JTextField access_result=this.tb_result;
+    public Lock threadlock = new ReentrantLock();
+    public MainWindow self=this;
 
     public MainWindow(){
 
@@ -45,7 +51,7 @@ public class MainWindow {
                     String str_pw = new String(pw);
                     String user=tb_mysqluser.getText();
                     String search=tb_select_city.getText();
-                    db =new CitySearch(user,str_pw,"javatest",search,tb_result);
+                    db =new CitySearch(search,user,str_pw,"javatest", self);
                     db_thread=new Thread(db);
                     db_thread.start();
 

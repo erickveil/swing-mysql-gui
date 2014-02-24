@@ -9,19 +9,39 @@ import java.sql.SQLException;
  */
 public class CitySearch extends DataConnection{
 
-    private JTextField search_out=null;
     private String query_key=null;
-    public CitySearch(String p_user, String p_password, String p_database, String p_query_key, JTextField p_search_out) {
+    private MainWindow parent=null;
+
+    public CitySearch(
+            String p_query_key,
+            String p_user, String p_password, String p_database,
+            MainWindow p_parent)
+    {
         super(p_user, p_password, p_database);
-        search_out=p_search_out;
+        parent=p_parent;
         query_key=p_query_key;
     }
 
+    /**
+     * There appears to be no way around it. If I want to easily lock the
+     * main thread to assign it the queried value, and have the GUI update
+     * at the point that value is available (without waiting on the GUI
+     * thread), I need to provide access to the text box here in this class.
+     *
+     * The MainWindow is given a public accessor for the text box,
+     * and at least I lock it before writing.
+     */
+    @Override
     public void run()
     {
         try{
             connectDB();
-            searchByCity(query_key);
+
+            int population = searchByCity(query_key);
+
+            parent.threadlock.lock();
+            parent.access_result.setText(((Integer)population).toString());
+            parent.threadlock.unlock();
         }
         catch(Exception e){
             System.err.println(e.toString());
@@ -30,7 +50,12 @@ public class CitySearch extends DataConnection{
         System.out.println("Query complete");
     }
 
-    public void searchByCity(String city) throws SQLException
+    /**
+     * @param city String the city to search by
+     * @return int the population if the queried city
+     * @throws SQLException
+     */
+    public int searchByCity(String city) throws SQLException
     {
         int population=0;
         String query_str = "SELECT * FROM javatest WHERE city=?";
@@ -42,9 +67,10 @@ public class CitySearch extends DataConnection{
             population=result.getInt("population");
         }
 
-        search_out.setText(((Integer)population).toString());
         result.close();
         statement.close();
         connect.close();
+
+        return population;
     }
 }
