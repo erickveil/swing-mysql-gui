@@ -50,6 +50,7 @@ public class DataConnection implements Runnable{
     public void connectDB() throws Exception
     {
         Class.forName("com.mysql.jdbc.Driver");
-        connect= DriverManager.getConnection("jdbc:mysql://localhost/"+database+"?user="+user+"&password="+password);
+        connect= DriverManager.getConnection("jdbc:mysql://localhost/"+
+                database+"?user="+user+"&password="+password);
     }
 }
