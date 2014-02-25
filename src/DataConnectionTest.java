@@ -46,5 +46,24 @@ public class DataConnectionTest {
         Assert.assertEquals(msg,expected,actual);
 
     }
+
+    @org.junit.Test
+    public void testInsertEntry() throws Exception{
+        String city = "Test";
+        int pop=10;
+        int key=(int)(Math.random()*100);
+
+        MainWindow mw = new MainWindow();
+
+        AddEntry target = new AddEntry(city,"10",user,pw,db);
+        target.connectDB();
+
+        int actual = target.insertEntry(key,city,pop);
+        int expected=1;
+        String msg="";
+
+        Assert.assertEquals(msg,expected,actual);
+
+    }
 }
 
