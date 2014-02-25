@@ -22,8 +22,10 @@ public class AddEntry extends DataConnection{
     public void run()
     {
         JFrame frame=new JFrame("Insert");
+        int key=(int)(Math.random()*100);
         try{
-            int key=(int)(Math.random()*100);
+            connectDB();
+
             if(insertEntry(key,new_city,new_population)!=1){
                 JOptionPane.showMessageDialog(frame,"Failed to add new entry");
             }
@@ -36,6 +38,10 @@ public class AddEntry extends DataConnection{
         catch(Exception e){
             JOptionPane.showMessageDialog(frame,"Failed to add new entry");
             System.err.println(e.toString());
+            System.err.println(e.getCause());
+            e.printStackTrace();
+            System.err.println("key: "+key+" city: "+new_city+" pop: "+
+                    new_population);
             return;
         }
         System.out.println("Insert complete");
@@ -44,16 +50,29 @@ public class AddEntry extends DataConnection{
     public int insertEntry(int key, String city, int pop) throws SQLException
     {
 
+        int result=-1;
         String query_str="INSERT INTO javatest (no,city,population) VALUES(?," +
                 " ?, ?)";
-        PreparedStatement statement=connect.prepareStatement(query_str);
-        statement.setInt(1,key);
-        statement.setString(2,city);
-        statement.setInt(3,pop);
-        int result=statement.executeUpdate();
-        statement.close();
+        try{
+            PreparedStatement statement=connect.prepareStatement(query_str);
+            statement.setInt(1,key);
+            statement.setString(2,city);
+            statement.setInt(3,pop);
+            result=statement.executeUpdate();
+            statement.close();
+        }
+        catch(NullPointerException ex){
+            System.err.println("NullPointerException: make sure you have " +
+                    "connected to a database and set the connection to " +
+                    "AddEntry.connect before calling this method.");
+            System.err.println(ex.toString());
+            System.err.println(ex.getCause());
+            ex.printStackTrace();
+            System.err.println("key: "+key+" city: "+new_city+" pop: "+
+                    new_population);
+        }
+
         connect.close();
         return result;
-
     }
 }

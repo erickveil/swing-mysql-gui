@@ -17,6 +17,7 @@ public class MainWindow {
     private JTextField tb_insert;
     private JTextField tb_mysqluser;
     private JButton bu_connect;
+    private JTextField tb_insert_pop;
     private JButton searchButton;
 
     private DataConnection db;
@@ -57,6 +58,27 @@ public class MainWindow {
 
                 }
             });
+
+            bu_insert.addActionListener(new ActionListener() {
+                JFrame frame = new JFrame("Insert");
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    if(tb_insert.getText().equals("") ||
+                            tb_insert_pop.getText().equals("")){
+                        JOptionPane.showMessageDialog(frame,
+                                "City name or population is missing.");
+                        return;
+                    }
+
+                    char[] pw=pw_mysqlpw.getPassword();
+                    String str_pw = new String(pw);
+                    String user=tb_mysqluser.getText();
+                    db = new AddEntry(tb_insert.getText(),
+                            tb_insert_pop.getText(),user,str_pw,"javatest");
+                    db_thread=new Thread(db);
+                    db_thread.start();
+                }
+            });
         }
         catch(IllegalThreadStateException ex) {
             System.err.println("Caught: "+ex.toString());
@@ -66,6 +88,7 @@ public class MainWindow {
         catch(Exception ex){
             System.err.println("Caught: "+ex.toString());
         }
+
     }
 
     public static void main(String[] args) {
