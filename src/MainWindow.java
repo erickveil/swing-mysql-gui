@@ -18,6 +18,10 @@ public class MainWindow {
     private JTextField tb_mysqluser;
     private JButton bu_connect;
     private JTextField tb_insert_pop;
+    private JPanel p_edit;
+    private JTextField tb_edit_city;
+    private JTextField tb_edit_pop;
+    private JButton bu_edit;
     private JButton searchButton;
 
     private DataConnection db;
