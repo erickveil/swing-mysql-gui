@@ -65,5 +65,27 @@ public class DataConnectionTest {
         Assert.assertEquals(msg,expected,actual);
 
     }
+
+    @org.junit.Test
+    public void testUpdateEntry() throws Exception{
+
+        String city = "Test";
+        int first_pop=10;
+        int second_pop=20;
+
+        AddEntry mock= new AddEntry("","10",user,pw,db);
+        mock.connectDB();
+        mock.insertEntry(50,city,first_pop);
+
+        UpdateEntry target=new UpdateEntry(user,pw,db,"","10");
+        target.connectDB();
+        int expected=1;
+        int actual=target.edit(city,second_pop);
+
+        Assert.assertEquals(expected,actual);
+
+
+
+    }
 }
 
