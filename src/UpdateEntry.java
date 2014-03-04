@@ -8,14 +8,14 @@ import java.sql.SQLException;
 public class UpdateEntry extends DataConnection{
 
     public String city;
-    public int pop;
+    public Integer pop;
 
     public UpdateEntry(String p_user,String p_pw,String p_db,String p_city,
-                       String p_pop){
+                       Integer p_pop){
 
         super(p_user,p_pw,p_db);
         city=p_city;
-        pop=Integer.parseInt(p_pop);
+        pop=p_pop;
     }
 
     @Override

@@ -32,19 +32,27 @@ public class DataConnectionTest {
     @org.junit.Test
     public void testSearchByCity() throws Exception {
 
-        String city = "Cleveland";
-
         MainWindow mw = new MainWindow();
 
+        String city = "";
+
+        city = "Cleveland";
         CitySearch target=new CitySearch(city,user,pw,db, mw);
         target.connectDB();
 
-        int actual = target.searchByCity(city);
-        int expected=123456;
-        String msg="";
+        Integer actual = target.searchByCity(city);
+        Integer expected=123456;
 
+        String msg="";
         Assert.assertEquals(msg,expected,actual);
 
+        city = "Not in db";
+        target=new CitySearch(city,user,pw,db, mw);
+        target.connectDB();
+        actual = target.searchByCity(city);
+        expected=null;
+        msg="";
+        Assert.assertEquals(msg,expected,actual);
     }
 
     @org.junit.Test
@@ -77,7 +85,7 @@ public class DataConnectionTest {
         mock.connectDB();
         mock.insertEntry(50,city,first_pop);
 
-        UpdateEntry target=new UpdateEntry(user,pw,db,"","10");
+        UpdateEntry target=new UpdateEntry(user,pw,db,"",10);
         target.connectDB();
         int expected=1;
         int actual=target.edit(city,second_pop);

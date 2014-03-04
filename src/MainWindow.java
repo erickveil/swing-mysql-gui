@@ -27,7 +27,9 @@ public class MainWindow {
     private DataConnection db;
     private Thread db_thread;
 
-    public JTextField access_result=this.tb_result;
+    public JTextField access_result_search_pop =this.tb_result;
+    public JTextField access_result_edit_pop=this.tb_edit_pop;
+    public JTextField access_result_edit_city=this.tb_edit_city;
     public Lock threadlock = new ReentrantLock();
     public MainWindow self=this;
 
@@ -79,6 +81,42 @@ public class MainWindow {
                     String user=tb_mysqluser.getText();
                     db = new AddEntry(tb_insert.getText(),
                             tb_insert_pop.getText(),user,str_pw,"javatest");
+                    db_thread=new Thread(db);
+                    db_thread.start();
+                }
+            });
+
+            bu_edit.addActionListener(new ActionListener() {
+                JFrame frame = new JFrame("Edit");
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+
+                    if(tb_edit_city.getText().equals("")||
+                            tb_edit_pop.getText().equals("")){
+                        JOptionPane.showMessageDialog(frame,
+                                "Edit City or population Name missing. " +
+                                        "Search for existing city to edit " +
+                                        "first.");
+                        return;
+                    }
+
+                    char[] pw=pw_mysqlpw.getPassword();
+                    String str_pw = new String(pw);
+                    String user = tb_mysqluser.getText();
+                    String pop_str=tb_edit_pop.getText();
+                    String city=tb_edit_city.getText();
+                    Integer pop=-1;
+
+                    try{
+                        pop=Integer.parseInt(pop_str);
+                    }
+                    catch(Exception ex){
+                        JOptionPane.showMessageDialog(frame,
+                                "The population entered must be an integer.");
+                        return;
+                    }
+
+                    db = new UpdateEntry(user,str_pw,"javatest",city,pop);
                     db_thread=new Thread(db);
                     db_thread.start();
                 }
