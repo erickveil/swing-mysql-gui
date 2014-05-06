@@ -1,4 +1,5 @@
 import junit.framework.Assert;
+import org.junit.After;
 import org.junit.BeforeClass;
 
 import javax.swing.*;
@@ -18,6 +19,15 @@ public class DataConnectionTest {
     @org.junit.Before
     public void setUp() throws Exception {  }
 
+
+    @After
+    public void tearDown() throws Exception {
+
+        // todo: delete the Test entries from the database
+        // delete from database where city="test";
+    }
+
+
     /**
      * used to run to obtain db connection first
      */
@@ -35,7 +45,6 @@ public class DataConnectionTest {
     }
 
     /*
-    Todo: determine which database is used for testing and select *
     Todo: make test for edit method
     Todo: make sure edit method follows new TDD procedure
     Todo: determine why testUpdateEntry fails
@@ -103,9 +112,6 @@ public class DataConnectionTest {
         int actual=target.edit(city,second_pop);
 
         Assert.assertEquals(expected,actual);
-
-
-
     }
 }
 
