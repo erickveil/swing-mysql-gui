@@ -1,6 +1,7 @@
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.swing.*;
 
@@ -45,9 +46,9 @@ public class DataConnectionTest {
     }
 
     /*
-    Todo: make test for edit method
+    Todo: make test for isEntryExists before add entry
+    Todo: add isEntryExists check to add method
     Todo: make sure edit method follows new TDD procedure
-    Todo: determine why testUpdateEntry fails
      */
 
     @org.junit.Test
@@ -92,6 +93,13 @@ public class DataConnectionTest {
         String msg="";
 
         Assert.assertEquals(msg,expected,actual);
+
+        // duplicate entries should fail
+        target.connectDB();
+        expected=0;
+        actual = target.insertEntry(key,city,pop);
+        Assert.assertEquals(msg,expected,actual);
+
 
     }
 

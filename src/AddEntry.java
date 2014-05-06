@@ -9,6 +9,7 @@ public class AddEntry extends DataConnection{
 
     private String new_city;
     private int new_population;
+    private CitySearch entry_checker;
 
     public AddEntry(String p_city, String p_pop, String p_user,String p_pw,
                     String p_db)
@@ -16,6 +17,7 @@ public class AddEntry extends DataConnection{
         super(p_user,p_pw,p_db);
         new_city=p_city;
         new_population=Integer.parseInt(p_pop);
+        entry_checker=new CitySearch(p_city,p_user,p_pw,p_db,null);
     }
 
     @Override
@@ -74,5 +76,12 @@ public class AddEntry extends DataConnection{
 
         connect.close();
         return result;
+    }
+
+    public boolean isEntryExists(String city) throws Exception
+    {
+        entry_checker.connectDB();
+        return (entry_checker.searchByCity(city)!=null);
+
     }
 }
