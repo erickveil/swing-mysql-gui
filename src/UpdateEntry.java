@@ -25,9 +25,11 @@ public class UpdateEntry extends DataConnection{
         try{
             connectDB();
 
-            if(edit(city,pop)!=1){
+            int number_of_updates=edit(city,pop);
+            if(number_of_updates!=1){
                 JOptionPane.showMessageDialog(frame,"Failed to edit entry" +
-                        ".\nCity: "+city+" pop: "+pop);
+                        ".\nCity: "+city+" pop: "+pop+" results: "+
+                        number_of_updates);
             }
             else{
                 JOptionPane.showMessageDialog(frame,

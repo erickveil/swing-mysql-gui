@@ -1,23 +1,31 @@
 import junit.framework.Assert;
+import org.junit.BeforeClass;
 
 import javax.swing.*;
 
 /**
+ * I'm going to go ahead and just throw all of my tests in this class.
+ * Lets me only gather pw once, easily.
+ *
  * Created by eveil on 2/24/14.
  */
 public class DataConnectionTest {
 
-    public String user="";
-    public String pw="";
-    public String db="";
+    public static String user="";
+    public static String pw="";
+    public static String db="";
 
     @org.junit.Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception {  }
 
+    /**
+     * used to run to obtain db connection first
+     */
+    @BeforeClass
+    public static void getPassword() {
         pw = JOptionPane.showInputDialog("MySQL Password:");
         user="root";
         db="javatest";
-
     }
 
     @org.junit.Test
@@ -26,8 +34,12 @@ public class DataConnectionTest {
         target.connectDB();
     }
 
-    // I'm going to go ahead and just throw all of my tests in this class.
-    // Lets me only gather pw once, easily.
+    /*
+    Todo: determine which database is used for testing and select *
+    Todo: make test for edit method
+    Todo: make sure edit method follows new TDD procedure
+    Todo: determine why testUpdateEntry fails
+     */
 
     @org.junit.Test
     public void testSearchByCity() throws Exception {
