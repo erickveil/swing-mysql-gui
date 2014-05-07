@@ -1,3 +1,10 @@
+package forms;
+
+import classes.AddEntry;
+import classes.CitySearch;
+import classes.DataConnection;
+import classes.UpdateEntry;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

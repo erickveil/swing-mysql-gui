@@ -1,3 +1,5 @@
+package classes;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -5,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Created by eveil on 2/25/14.
  */
-public class AddEntry extends DataConnection{
+public class AddEntry extends DataConnection {
 
     private String new_city;
     private int new_population;
@@ -66,7 +68,7 @@ public class AddEntry extends DataConnection{
         catch(NullPointerException ex){
             System.err.println("NullPointerException: make sure you have " +
                     "connected to a database and set the connection to " +
-                    "AddEntry.connect before calling this method.");
+                    "classes.AddEntry.connect before calling this method.");
             System.err.println(ex.toString());
             System.err.println(ex.getCause());
             ex.printStackTrace();

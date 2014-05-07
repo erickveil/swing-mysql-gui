@@ -1,14 +1,14 @@
+package UnitTests;
+
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.BeforeClass;
-import org.junit.Test;
-
 import javax.swing.*;
+import classes.*;
+import forms.*;
+
 
 /**
- * I'm going to go ahead and just throw all of my tests in this class.
- * Lets me only gather pw once, easily.
- *
  * Created by eveil on 2/24/14.
  */
 public class DataConnectionTest {
@@ -54,12 +54,12 @@ public class DataConnectionTest {
     @org.junit.Test
     public void testSearchByCity() throws Exception {
 
-        MainWindow mw = new MainWindow();
+        //forms.MainWindow mw = new forms.MainWindow();
 
         String city = "";
 
         city = "Cleveland";
-        CitySearch target=new CitySearch(city,user,pw,db, mw);
+        CitySearch target=new CitySearch(city,user,pw,db, null);
         target.connectDB();
 
         Integer actual = target.searchByCity(city);
@@ -69,13 +69,27 @@ public class DataConnectionTest {
         Assert.assertEquals(msg,expected,actual);
 
         city = "Not in db";
-        target=new CitySearch(city,user,pw,db, mw);
+        target=new CitySearch(city,user,pw,db, null);
         target.connectDB();
         actual = target.searchByCity(city);
         expected=null;
         msg="";
         Assert.assertEquals(msg,expected,actual);
     }
+
+    /*
+    @Test
+    public void test_isEntryExists(String test_key,
+                                   boolean expect) throws Exception
+    {
+        String city="";
+        String pop="";
+        classes.AddEntry target=new classes.AddEntry(city,pop,user,pw,db);
+        boolean actual=target.isEntryExists(test_key);
+        Assert.assertEquals(expect,actual);
+
+    }
+    */
 
     @org.junit.Test
     public void testInsertEntry() throws Exception{

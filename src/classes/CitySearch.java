@@ -1,12 +1,17 @@
+package classes;
+
+import classes.DataConnection;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import forms.MainWindow;
 
 /**
  * Created by eveil on 1/22/14.
  */
-public class CitySearch extends DataConnection{
+public class CitySearch extends DataConnection {
 
     private String query_key=null;
     private MainWindow parent=null;

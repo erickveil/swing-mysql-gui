@@ -1,3 +1,7 @@
+package classes;
+
+import classes.DataConnection;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -5,7 +9,7 @@ import java.sql.SQLException;
 /**
  * Created by eveil on 2/28/14.
  */
-public class UpdateEntry extends DataConnection{
+public class UpdateEntry extends DataConnection {
 
     public String city;
     public Integer pop;
