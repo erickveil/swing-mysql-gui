@@ -46,7 +46,6 @@ public class DataConnectionTest {
     }
 
     /*
-    Todo: make test for isEntryExists before add entry
     Todo: add isEntryExists check to add method
     Todo: make sure edit method follows new TDD procedure
      */
@@ -91,6 +90,10 @@ public class DataConnectionTest {
     }
     */
 
+    /**
+     * Todo test fails because no delete after previous test
+     * @throws Exception
+     */
     @org.junit.Test
     public void testInsertEntry() throws Exception{
         String city = "Test";
@@ -102,19 +105,19 @@ public class DataConnectionTest {
         AddEntry target = new AddEntry(city,"10",user,pw,db);
         target.connectDB();
 
-        int actual = target.insertEntry(key,city,pop);
-        int expected=1;
-        String msg="";
+        StringBuilder result=new StringBuilder();
+        Integer actual = target.insertEntry(key,city,pop,result);
+        Integer expected=1;
+        String msg="result: "+result.toString();
 
         Assert.assertEquals(msg,expected,actual);
 
         // duplicate entries should fail
         target.connectDB();
-        expected=0;
-        actual = target.insertEntry(key,city,pop);
+        expected=null;
+        actual = target.insertEntry(key,city,pop,result);
+        msg="result: "+result.toString();
         Assert.assertEquals(msg,expected,actual);
-
-
     }
 
     @org.junit.Test
@@ -126,7 +129,9 @@ public class DataConnectionTest {
 
         AddEntry mock= new AddEntry("","10",user,pw,db);
         mock.connectDB();
-        mock.insertEntry(50,city,first_pop);
+
+        StringBuilder result=new StringBuilder();
+        mock.insertEntry(50,city,first_pop,result);
 
         UpdateEntry target=new UpdateEntry(user,pw,db,"",10);
         target.connectDB();

@@ -30,7 +30,8 @@ public class AddEntry extends DataConnection {
         try{
             connectDB();
 
-            if(insertEntry(key,new_city,new_population)!=1){
+            StringBuilder result=new StringBuilder();
+            if(insertEntry(key,new_city,new_population,result)!=1){
                 JOptionPane.showMessageDialog(frame,"Failed to add new entry");
             }
             else{
@@ -51,10 +52,34 @@ public class AddEntry extends DataConnection {
         System.out.println("Insert complete");
     }
 
-    public int insertEntry(int key, String city, int pop) throws SQLException
+    /**
+     * Adds a new entry to the database
+     *
+     * @param key int The database index key
+     * @param city String The city name
+     * @param pop int The population of the city.
+     * @param result StringBuilder Output value. Check if returns null. If
+     *               set to ALREADY_EXISTS, then the entry is not added
+     *               because the city already exists in the database. Will be
+     *               set to GOOD if the entry was inserted.
+     * @return Integer|null Will be 1 if the entry is inserted, or null if not.
+     * @throws Exception Usually because the database is not writable or
+     * accessible.
+     *
+     * Todo: Is null return the correct abortive exit here? Rewrite using
+     * exceptions and see. If exceptions are not the way,
+     * rewind to this commit.
+     */
+    public Integer insertEntry(
+            int key, String city, int pop, StringBuilder result )
+            throws Exception
     {
+        if(isEntryExists(city)){
+            result.append("ALREADY_EXISTS");
+            return null;
+        }
 
-        int result=-1;
+        Integer query_result=null;
         String query_str="INSERT INTO javatest (no,city,population) VALUES(?," +
                 " ?, ?)";
         try{
@@ -62,7 +87,7 @@ public class AddEntry extends DataConnection {
             statement.setInt(1,key);
             statement.setString(2,city);
             statement.setInt(3,pop);
-            result=statement.executeUpdate();
+            query_result=statement.executeUpdate();
             statement.close();
         }
         catch(NullPointerException ex){
@@ -77,7 +102,8 @@ public class AddEntry extends DataConnection {
         }
 
         connect.close();
-        return result;
+        result.append("GOOD");
+        return query_result;
     }
 
     public boolean isEntryExists(String city) throws Exception
