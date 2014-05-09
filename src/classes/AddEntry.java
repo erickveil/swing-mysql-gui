@@ -116,6 +116,6 @@ public class AddEntry extends DataConnection {
     public boolean isEntryExists(String city) throws Exception
     {
         entry_checker.connectDB();
-        return (entry_checker.searchPopulationByCity(city, null)!=null);
+        return (entry_checker.searchPopulationByCity(city)!=null);
     }
 }

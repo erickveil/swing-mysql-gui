@@ -3,6 +3,7 @@ package classes;
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import forms.MainWindow;
 
@@ -40,7 +41,7 @@ public class CitySearch extends DataConnection {
         try{
             connectDB();
 
-            Integer population = searchPopulationByCity(query_key, null);
+            Integer population = searchPopulationByCity(query_key);
 
             if(population==null){
                 JFrame frame = new JFrame("Insert");
@@ -56,7 +57,7 @@ public class CitySearch extends DataConnection {
             parent.threadlock.unlock();
         }
         catch(Exception e){
-            System.err.println(e.toString());
+            reportFatalException(e);
             return;
         }
         System.out.println("Query complete");
@@ -68,24 +69,27 @@ public class CitySearch extends DataConnection {
      * todo: fix every call to this method to check for failure
      *
      * @param city String the city to search by
-     * @param return_status StringBuilder Output non-error failure status
      * @return Integer the population if the queried city. null if result not
-     * found
+     * found. Check this.return_status if null
+     * @throws java.sql.SQLException Fatal if the database cannot be accessed
+     * . Make sure the connection member is not closed before calling and
+     * that the database is setup correctly and running.
      */
-    public Integer searchPopulationByCity(String city, StringBuilder return_status) throws Exception
+    public Integer searchPopulationByCity(String city) throws SQLException
     {
         if(city.equals("")) {
-            return_status.append("EMPTY_SEARCH");
+            return_status="EMPTY_SEARCH_STRING";
             return null;
         }
 
-        int population;
+        Integer population;
         String query_str = "SELECT * FROM javatest WHERE city=?";
         PreparedStatement statement = connect.prepareStatement(query_str);
         statement.setString(1,city);
         ResultSet result = statement.executeQuery();
 
         if(!result.next()){
+            return_status="NO_ENTRY_FOUND";
             return null;
         }
 
@@ -96,6 +100,7 @@ public class CitySearch extends DataConnection {
         result.close();
         statement.close();
         connect.close();
+        return_status="GOOD";
 
         return population;
     }

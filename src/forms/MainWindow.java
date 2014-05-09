@@ -96,11 +96,12 @@ public class MainWindow {
 
     /**
      * Tests the connection to the database.
-     * Exceptions should be fatal.
+     * Exceptions are handled at the top level of the thread.
      *
-     * @return bool If false, check this.return_status for an error code.
+     * No soft failures, this method returns void or throws on its own thread
+     * during an error.
      */
-    private boolean connectAction()
+    private void connectAction()
     {
         char[] pw=pw_mysqlpw.getPassword();
         String str_pw = new String(pw);
@@ -108,7 +109,6 @@ public class MainWindow {
         db =new DataConnection(user,str_pw,"javatest");
         db_thread=new Thread(db);
         db_thread.start();
-        return true;
     }
 
     private boolean searchAction()

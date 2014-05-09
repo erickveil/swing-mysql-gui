@@ -61,7 +61,7 @@ public class DataConnectionTest {
         CitySearch target=new CitySearch(city,user,pw,db, null);
         target.connectDB();
 
-        Integer actual = target.searchPopulationByCity(city, null);
+        Integer actual = target.searchPopulationByCity(city);
         Integer expected=123456;
 
         String msg="";
@@ -70,7 +70,7 @@ public class DataConnectionTest {
         city = "Not in db";
         target=new CitySearch(city,user,pw,db, null);
         target.connectDB();
-        actual = target.searchPopulationByCity(city, null);
+        actual = target.searchPopulationByCity(city);
         expected=null;
         msg="";
         Assert.assertEquals(msg,expected,actual);

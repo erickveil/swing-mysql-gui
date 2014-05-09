@@ -12,7 +12,10 @@ public class DataConnection implements Runnable{
     private String user;
     private String password;
     private String database;
+
     public Connection connect;
+
+    protected String return_status;
 
     public DataConnection(String p_user, String p_password, String p_database)
     {
@@ -40,12 +43,24 @@ public class DataConnection implements Runnable{
                     "detected",JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null,e.getMessage(),
-                    "Connection Error",JOptionPane.ERROR_MESSAGE);
+
+            reportFatalException(e);
             return;
         }
         System.out.println("Database connected.");
+    }
+
+    /**
+     * When fatal exceptions are caught, all descendant classed handle them
+     * the same way at their own thread entry points.
+     *
+     * @param e Exception The thrown fatal exception
+     */
+    protected void reportFatalException(Exception e)
+    {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null,e.getMessage(),
+                "Connection Error",JOptionPane.ERROR_MESSAGE);
     }
 
     /**
