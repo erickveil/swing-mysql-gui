@@ -1,11 +1,9 @@
 package classes;
 
-import classes.DataConnection;
-
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import forms.MainWindow;
 
 /**
@@ -41,7 +39,7 @@ public class CitySearch extends DataConnection {
         try{
             connectDB();
 
-            Integer population = searchByCity(query_key);
+            Integer population = searchPopulationByCity(query_key, null);
 
             if(population==null){
                 JFrame frame = new JFrame("Insert");
@@ -64,14 +62,23 @@ public class CitySearch extends DataConnection {
     }
 
     /**
+     * Obtains the population for the requested city from the database
+     *
+     * todo: fix every call to this method to check for failure
+     *
      * @param city String the city to search by
+     * @param return_status StringBuilder Output non-error failure status
      * @return Integer the population if the queried city. null if result not
      * found
-     * @throws SQLException
      */
-    public Integer searchByCity(String city) throws Exception
+    public Integer searchPopulationByCity(String city, StringBuilder return_status) throws Exception
     {
-        int population=0;
+        if(city.equals("")) {
+            return_status.append("EMPTY_SEARCH");
+            return null;
+        }
+
+        int population;
         String query_str = "SELECT * FROM javatest WHERE city=?";
         PreparedStatement statement = connect.prepareStatement(query_str);
         statement.setString(1,city);

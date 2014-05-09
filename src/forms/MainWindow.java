@@ -41,7 +41,6 @@ public class MainWindow {
     public MainWindow self=this;
 
     public MainWindow(){
-
         try{
             bu_connect.addActionListener(new ActionListener() {
                  @Override
@@ -135,6 +134,8 @@ public class MainWindow {
             System.err.println("Ignoring command.");
         }
         catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",
+                    JOptionPane.ERROR_MESSAGE);
             System.err.println("Caught: "+ex.toString());
         }
 

@@ -2,7 +2,6 @@ package classes;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * Created by eveil on 2/25/14.
@@ -106,10 +105,17 @@ public class AddEntry extends DataConnection {
         return query_result;
     }
 
+    /**
+     * Checks the city to see if that entry has already been inserted into
+     * the database
+     *
+     * @param city string The city to search for
+     * @return boolean true if exists, false if not
+     * @throws Exception
+     */
     public boolean isEntryExists(String city) throws Exception
     {
         entry_checker.connectDB();
-        return (entry_checker.searchByCity(city)!=null);
-
+        return (entry_checker.searchPopulationByCity(city, null)!=null);
     }
 }
