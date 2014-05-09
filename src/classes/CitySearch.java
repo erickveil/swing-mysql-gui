@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import forms.MainWindow;
 
 /**
+ *
  * Created by eveil on 1/22/14.
  */
 public class CitySearch extends DataConnection {

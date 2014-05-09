@@ -21,6 +21,9 @@ public class DataConnection implements Runnable{
         database=p_database;
     }
 
+    /**
+     * Start point of the thread. Any fatal error ends up caught here.
+     */
     public void run()
     {
         try{
@@ -37,7 +40,9 @@ public class DataConnection implements Runnable{
                     "detected",JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){
-            System.err.println(e.toString());
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e.getMessage(),
+                    "Connection Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
         System.out.println("Database connected.");

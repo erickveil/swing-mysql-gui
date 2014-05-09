@@ -12,6 +12,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ *
  * Created by eveil on 1/14/14.
  */
 public class MainWindow {
@@ -33,6 +34,14 @@ public class MainWindow {
 
     private DataConnection db;
     private Thread db_thread;
+    private String pw;
+    private String user;
+
+    /**
+     * Holds the last return status set for testing the reason for a
+     * soft method failure
+     * */
+    public String return_status;
 
     public JTextField access_result_search_pop =this.tb_result;
     public JTextField access_result_edit_pop=this.tb_edit_pop;
@@ -40,91 +49,36 @@ public class MainWindow {
     public Lock threadlock = new ReentrantLock();
     public MainWindow self=this;
 
+    /**
+     * Primary GUI
+     */
     public MainWindow(){
         try{
             bu_connect.addActionListener(new ActionListener() {
                  @Override
                  public void actionPerformed(ActionEvent actionEvent) {
-
-                     char[] pw=pw_mysqlpw.getPassword();
-                     String str_pw = new String(pw);
-                     String user=tb_mysqluser.getText();
-                     db =new DataConnection(user,str_pw,"javatest");
-                     db_thread=new Thread(db);
-                     db_thread.start();
-
+                     connectAction();
                  }
             });
 
             bu_search.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    char[] pw=pw_mysqlpw.getPassword();
-                    String str_pw = new String(pw);
-                    String user=tb_mysqluser.getText();
-                    String search=tb_select_city.getText();
-                    db =new CitySearch(search,user,str_pw,"javatest", self);
-                    db_thread=new Thread(db);
-                    db_thread.start();
-
+                public void actionPerformed(ActionEvent actionEvent) {
+                    searchAction();
                 }
             });
 
             bu_insert.addActionListener(new ActionListener() {
-                JFrame frame = new JFrame("Insert");
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    if(tb_insert.getText().equals("") ||
-                            tb_insert_pop.getText().equals("")){
-                        JOptionPane.showMessageDialog(frame,
-                                "City name or population is missing.");
-                        return;
-                    }
-
-                    char[] pw=pw_mysqlpw.getPassword();
-                    String str_pw = new String(pw);
-                    String user=tb_mysqluser.getText();
-                    db = new AddEntry(tb_insert.getText(),
-                            tb_insert_pop.getText(),user,str_pw,"javatest");
-                    db_thread=new Thread(db);
-                    db_thread.start();
+                    insertAction();
                 }
             });
 
             bu_edit.addActionListener(new ActionListener() {
-                JFrame frame = new JFrame("Edit");
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-
-                    if(tb_edit_city.getText().equals("")||
-                            tb_edit_pop.getText().equals("")){
-                        JOptionPane.showMessageDialog(frame,
-                                "Edit City or population Name missing. " +
-                                        "Search for existing city to edit " +
-                                        "first.");
-                        return;
-                    }
-
-                    char[] pw=pw_mysqlpw.getPassword();
-                    String str_pw = new String(pw);
-                    String user = tb_mysqluser.getText();
-                    String pop_str=tb_edit_pop.getText();
-                    String city=tb_edit_city.getText();
-                    Integer pop=-1;
-
-                    try{
-                        pop=Integer.parseInt(pop_str);
-                    }
-                    catch(Exception ex){
-                        JOptionPane.showMessageDialog(frame,
-                                "The population entered must be an integer.");
-                        return;
-                    }
-
-                    db = new UpdateEntry(user,str_pw,"javatest",city,pop);
-                    db_thread=new Thread(db);
-                    db_thread.start();
+                    updateAction();
                 }
             });
         }
@@ -136,9 +90,108 @@ public class MainWindow {
         catch(Exception ex){
             JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",
                     JOptionPane.ERROR_MESSAGE);
-            System.err.println("Caught: "+ex.toString());
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Tests the connection to the database.
+     * Exceptions should be fatal.
+     *
+     * @return bool If false, check this.return_status for an error code.
+     */
+    private boolean connectAction()
+    {
+        char[] pw=pw_mysqlpw.getPassword();
+        String str_pw = new String(pw);
+        String user=tb_mysqluser.getText();
+        db =new DataConnection(user,str_pw,"javatest");
+        db_thread=new Thread(db);
+        db_thread.start();
+        return true;
+    }
+
+    private boolean searchAction()
+    {
+        readCredentials();
+        String search=tb_select_city.getText();
+        db =new CitySearch(search,user,pw,"javatest", self);
+        db_thread=new Thread(db);
+        db_thread.start();
+        return true;
+    }
+
+    private boolean insertAction()
+    {
+        JFrame frame = new JFrame("Insert");
+        if(tb_insert.getText().equals("") ||
+            tb_insert_pop.getText().equals("")){
+            JOptionPane.showMessageDialog(frame,
+                "City name or population is missing.");
+            return false;
         }
 
+        char[] pw=pw_mysqlpw.getPassword();
+        String str_pw = new String(pw);
+        String user=tb_mysqluser.getText();
+        db = new AddEntry(tb_insert.getText(),
+        tb_insert_pop.getText(),user,str_pw,"javatest");
+        db_thread=new Thread(db);
+        db_thread.start();
+        return true;
+    }
+
+    private boolean updateAction()
+    {
+        JFrame frame = new JFrame("Edit");
+        if(tb_edit_city.getText().equals("")||
+            tb_edit_pop.getText().equals("")){
+            JOptionPane.showMessageDialog(frame,
+                    "Edit City or population Name missing. " +
+                            "Search for existing city to edit " +
+                            "first.");
+            return false;
+        }
+
+        char[] pw=pw_mysqlpw.getPassword();
+        String str_pw = new String(pw);
+        String user = tb_mysqluser.getText();
+        String pop_str=tb_edit_pop.getText();
+        String city=tb_edit_city.getText();
+        Integer pop=-1;
+
+        try{
+            pop=Integer.parseInt(pop_str);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(frame,
+                "The population entered must be an integer.");
+            return false;
+        }
+
+        db = new UpdateEntry(user,str_pw,"javatest",city,pop);
+        db_thread=new Thread(db);
+        db_thread.start();
+        return true;
+    }
+
+    private boolean deleteAction()
+    {
+        return true;
+    }
+
+    /**
+     * Repeated use method to update user name and password with the
+     * currently entered values each time an event is fired.
+     * There is no validation on the sourced input
+     *
+     * Failures are fatal exceptions.
+     */
+    private void readCredentials()
+    {
+        char[] raw_pw=pw_mysqlpw.getPassword();
+        pw = new String(raw_pw);
+        user=tb_mysqluser.getText();
     }
 
     public static void main(String[] args) {
