@@ -2,6 +2,7 @@ package classes;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * Created by eveil on 2/25/14.
@@ -24,23 +25,26 @@ public class AddEntry extends DataConnection {
     @Override
     public void run()
     {
-        JFrame frame=new JFrame("Insert");
         int key=(int)(Math.random()*100);
         try{
             connectDB();
-
             StringBuilder result=new StringBuilder();
-            if(insertEntry(key,new_city,new_population,result)!=1){
-                JOptionPane.showMessageDialog(frame,"Failed to add new entry");
+
+            if(!insertEntry(key,new_city,new_population)){
+                JOptionPane.showMessageDialog(
+                        null, "Failed to add new entry", "Insert",
+                        JOptionPane.ERROR_MESSAGE);
             }
             else{
-                JOptionPane.showMessageDialog(frame,
-                        "Entry added successfully.");
+                JOptionPane.showMessageDialog(
+                        null, "Entry added successfully.", "Insert",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         }
-
         catch(Exception e){
-            JOptionPane.showMessageDialog(frame,"Failed to add new entry");
+            JOptionPane.showMessageDialog(
+                    null, "Failed to add new entry", "Insert",
+                    JOptionPane.ERROR_MESSAGE);
             System.err.println(e.toString());
             System.err.println(e.getCause());
             e.printStackTrace();
@@ -57,28 +61,23 @@ public class AddEntry extends DataConnection {
      * @param key int The database index key
      * @param city String The city name
      * @param pop int The population of the city.
-     * @param result StringBuilder Output value. Check if returns null. If
-     *               set to ALREADY_EXISTS, then the entry is not added
-     *               because the city already exists in the database. Will be
-     *               set to GOOD if the entry was inserted.
-     * @return Integer|null Will be 1 if the entry is inserted, or null if not.
-     * @throws Exception Usually because the database is not writable or
-     * accessible.
-     *
-     * Todo: Is null return the correct abortive exit here? Rewrite using
-     * exceptions and see. If exceptions are not the way,
-     * rewind to this commit.
+     * @return boolean True if the insert was successful. If false,
+     * check this.result.
+     * @throws java.sql.SQLException Usually because the database is not
+     * writable
+     * @throws Exception if an unexpected number of entries have been written
+     * (should always be 1).
      */
-    public Integer insertEntry(
-            int key, String city, int pop, StringBuilder result )
-            throws Exception
+    public boolean insertEntry(
+            int key, String city, int pop)
+            throws SQLException, Exception
     {
         if(isEntryExists(city)){
-            result.append("ALREADY_EXISTS");
-            return null;
+            return_status="ALREADY_EXISTS";
+            return false;
         }
 
-        Integer query_result=null;
+        Integer query_result=0;
         String query_str="INSERT INTO javatest (no,city,population) VALUES(?," +
                 " ?, ?)";
         try{
@@ -101,8 +100,13 @@ public class AddEntry extends DataConnection {
         }
 
         connect.close();
-        result.append("GOOD");
-        return query_result;
+        if(query_result==1){
+            return_status="GOOD";
+            return true;
+        }
+
+        throw new Exception("Incorrect number of inserts have been made: "
+                +query_result );
     }
 
     /**

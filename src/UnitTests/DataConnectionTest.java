@@ -106,16 +106,16 @@ public class DataConnectionTest {
         target.connectDB();
 
         StringBuilder result=new StringBuilder();
-        Integer actual = target.insertEntry(key,city,pop,result);
-        Integer expected=1;
+        boolean actual = target.insertEntry(key,city,pop);
+        boolean expected=true;
         String msg="result: "+result.toString();
 
         Assert.assertEquals(msg,expected,actual);
 
         // duplicate entries should fail
         target.connectDB();
-        expected=null;
-        actual = target.insertEntry(key,city,pop,result);
+        expected=false;
+        actual = target.insertEntry(key,city,pop);
         msg="result: "+result.toString();
         Assert.assertEquals(msg,expected,actual);
     }
@@ -131,7 +131,7 @@ public class DataConnectionTest {
         mock.connectDB();
 
         StringBuilder result=new StringBuilder();
-        mock.insertEntry(50,city,first_pop,result);
+        mock.insertEntry(50,city,first_pop);
 
         UpdateEntry target=new UpdateEntry(user,pw,db,"",10);
         target.connectDB();
