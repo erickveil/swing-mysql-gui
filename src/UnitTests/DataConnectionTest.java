@@ -45,11 +45,6 @@ public class DataConnectionTest {
         target.connectDB();
     }
 
-    /*
-    Todo: add isEntryExists check to add method
-    Todo: make sure edit method follows new TDD procedure
-     */
-
     @org.junit.Test
     public void testSearchByCity() throws Exception {
 
@@ -91,7 +86,6 @@ public class DataConnectionTest {
     */
 
     /**
-     * Todo test fails because no delete after previous test
      * @throws Exception
      */
     @org.junit.Test
@@ -135,8 +129,8 @@ public class DataConnectionTest {
 
         UpdateEntry target=new UpdateEntry(user,pw,db,"",10);
         target.connectDB();
-        int expected=1;
-        int actual=target.edit(city,second_pop);
+        boolean expected=true;
+        boolean actual=target.edit(city,second_pop);
 
         Assert.assertEquals(expected,actual);
     }

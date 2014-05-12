@@ -66,8 +66,6 @@ public class CitySearch extends DataConnection {
     /**
      * Obtains the population for the requested city from the database
      *
-     * todo: fix every call to this method to check for failure
-     *
      * @param city String the city to search by
      * @return Integer the population if the queried city. null if result not
      * found. Check this.return_status if null
