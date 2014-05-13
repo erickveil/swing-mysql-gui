@@ -27,8 +27,8 @@ public class DeleteEntryTest {
     }
 
     @Test
-    public void testDeleteByCity() throws Exception {
-
+    public void testDeleteByCity() throws Exception
+    {
         String city="test";
         String pop="1";
         AddEntry mock_maker =new AddEntry(city,pop,user,pw,db);
@@ -41,5 +41,31 @@ public class DeleteEntryTest {
         boolean expected = true;
 
         Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testFailDeleteByCity() throws Exception
+    {
+        String city="";
+
+        DeleteEntry target = new DeleteEntry(user,pw,db,city);
+        target.connectDB();
+        boolean actual = target.deleteByCity(city);
+        boolean expected = false;
+
+        String expected_status="EMPTY_CITY";
+
+        Assert.assertEquals(expected,actual);
+        Assert.assertEquals(expected_status,target.return_status);
+    }
+
+    @Test(expected = Exception.class)
+    public void testExceptionDeleteByCity() throws Exception
+    {
+        String city="Not There";
+
+        DeleteEntry target = new DeleteEntry(user,pw,db,city);
+        target.connectDB();
+        target.deleteByCity(city);
     }
 }

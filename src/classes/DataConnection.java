@@ -15,7 +15,7 @@ public class DataConnection implements Runnable{
 
     public Connection connect;
 
-    protected String return_status;
+    public String return_status;
 
     public DataConnection(String p_user, String p_password, String p_database)
     {
