@@ -41,14 +41,9 @@ public class UpdateEntry extends DataConnection {
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(
-                    null, "Failed to add new entry", "Edit",
-                    JOptionPane.ERROR_MESSAGE);
-            System.err.println(e.toString());
-            System.err.println(e.getCause());
-            e.printStackTrace();
             System.err.println("city: "+city+" pop: "+ pop + "return status: " +
                     return_status);
+            reportFatalException(e,"Edit");
             return;
         }
         System.out.println("Insert complete");

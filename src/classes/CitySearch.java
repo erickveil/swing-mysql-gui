@@ -57,7 +57,7 @@ public class CitySearch extends DataConnection {
             parent.threadlock.unlock();
         }
         catch(Exception e){
-            reportFatalException(e);
+            reportFatalException(e, "Search");
             return;
         }
         System.out.println("Query complete");

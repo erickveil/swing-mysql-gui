@@ -44,7 +44,7 @@ public class DataConnection implements Runnable{
         }
         catch(Exception e){
 
-            reportFatalException(e);
+            reportFatalException(e, "Connect");
             return;
         }
         System.out.println("Database connected.");
@@ -55,12 +55,14 @@ public class DataConnection implements Runnable{
      * the same way at their own thread entry points.
      *
      * @param e Exception The thrown fatal exception
+     * @param notice_title String The title on the user error notification
      */
-    protected void reportFatalException(Exception e)
+    protected void reportFatalException(Exception e, String notice_title)
     {
         e.printStackTrace();
+        System.err.println(e.getCause());
         JOptionPane.showMessageDialog(null,e.getMessage(),
-                "Connection Error",JOptionPane.ERROR_MESSAGE);
+                notice_title,JOptionPane.ERROR_MESSAGE);
     }
 
     /**
