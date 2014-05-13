@@ -20,12 +20,10 @@ public class DataConnectionTest {
     @org.junit.Before
     public void setUp() throws Exception {  }
 
-
-    @After
     public void tearDown() throws Exception {
-
-        // todo: delete the Test entries from the database
-        // delete from database where city="test";
+        DeleteEntry delete_manager = new DeleteEntry(user,pw,db,"");
+        delete_manager.connectDB();
+        delete_manager.deleteByCity("test");
     }
 
 
@@ -71,26 +69,12 @@ public class DataConnectionTest {
         Assert.assertEquals(msg,expected,actual);
     }
 
-    /*
-    @Test
-    public void test_isEntryExists(String test_key,
-                                   boolean expect) throws Exception
-    {
-        String city="";
-        String pop="";
-        classes.AddEntry target=new classes.AddEntry(city,pop,user,pw,db);
-        boolean actual=target.isEntryExists(test_key);
-        Assert.assertEquals(expect,actual);
-
-    }
-    */
-
     /**
      * @throws Exception
      */
     @org.junit.Test
     public void testInsertEntry() throws Exception{
-        String city = "Test";
+        String city = "test";
         int pop=10;
         int key=(int)(Math.random()*100);
 
@@ -112,12 +96,14 @@ public class DataConnectionTest {
         actual = target.insertEntry(key,city,pop);
         msg="result: "+result.toString();
         Assert.assertEquals(msg,expected,actual);
+
+        tearDown();
     }
 
     @org.junit.Test
     public void testUpdateEntry() throws Exception{
 
-        String city = "Test";
+        String city = "test";
         int first_pop=10;
         int second_pop=20;
 
@@ -133,6 +119,7 @@ public class DataConnectionTest {
         boolean actual=target.edit(city,second_pop);
 
         Assert.assertEquals(expected,actual);
+        tearDown();
     }
 }
 
