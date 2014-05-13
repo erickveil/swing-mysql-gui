@@ -1,9 +1,6 @@
 package forms;
 
-import classes.AddEntry;
-import classes.CitySearch;
-import classes.DataConnection;
-import classes.UpdateEntry;
+import classes.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,6 +27,10 @@ public class MainWindow {
     private JTextField tb_edit_city;
     private JTextField tb_edit_pop;
     private JButton bu_edit;
+    private JPanel p_delete;
+    private JLabel lbl_del;
+    private JTextField tb_delete;
+    private JButton bu_delete;
     private JButton searchButton;
 
     private DataConnection db;
@@ -81,7 +82,13 @@ public class MainWindow {
                     updateAction();
                 }
             });
-            //todo: add delete event
+
+            bu_delete.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+                    deleteCity();
+                }
+            });
         }
         catch(IllegalThreadStateException ex) {
             System.err.println("Caught: "+ex.toString());
@@ -93,6 +100,25 @@ public class MainWindow {
                     JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+
+    }
+
+    /**
+     * todo: delete button with no entries, pw or other "suceeds"
+     * todo: make delete field non-writable
+     * todo: delete entry error box shows up empty
+     * todo: search should write to delete field
+     * todo: successull commands should notify the user, not the command line.
+     */
+    private void deleteCity()
+    {
+        char[] pw=pw_mysqlpw.getPassword();
+        String str_pw = new String(pw);
+        String user=tb_mysqluser.getText();
+        String city_to_delete=tb_delete.getText();
+        db=new DeleteEntry(user,str_pw,"javatest",city_to_delete);
+        db_thread=new Thread(db);
+        db_thread.start();
     }
 
     /**
