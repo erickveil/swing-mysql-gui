@@ -81,6 +81,7 @@ public class MainWindow {
                     updateAction();
                 }
             });
+            //todo: add delete event
         }
         catch(IllegalThreadStateException ex) {
             System.err.println("Caught: "+ex.toString());
