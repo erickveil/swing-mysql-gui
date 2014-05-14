@@ -47,6 +47,7 @@ public class MainWindow {
     public JTextField access_result_search_pop =this.tb_result;
     public JTextField access_result_edit_pop=this.tb_edit_pop;
     public JTextField access_result_edit_city=this.tb_edit_city;
+    public JTextField access_result_delete=this.tb_delete;
     public Lock threadlock = new ReentrantLock();
     public MainWindow self=this;
 
@@ -105,7 +106,6 @@ public class MainWindow {
 
     /**
      * todo: delete entry error box shows up empty
-     * todo: search should write to delete field
      * todo: successull commands should notify the user, not the command line.
      */
     private void deleteCity()

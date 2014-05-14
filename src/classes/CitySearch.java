@@ -53,6 +53,7 @@ public class CitySearch extends DataConnection {
             parent.threadlock.lock();
             parent.access_result_search_pop.setText(population.toString());
             parent.access_result_edit_city.setText(query_key);
+            parent.access_result_delete.setText(query_key);
             parent.access_result_edit_pop.setText(population.toString());
             parent.threadlock.unlock();
         }
