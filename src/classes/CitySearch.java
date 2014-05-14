@@ -61,7 +61,6 @@ public class CitySearch extends DataConnection {
             reportFatalException(e, "Search");
             return;
         }
-        System.out.println("Query complete");
     }
 
     /**

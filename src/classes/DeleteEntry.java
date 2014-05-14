@@ -32,7 +32,9 @@ public class DeleteEntry extends DataConnection{
         catch(Exception e){
             reportFatalException(e,"Delete Entry");
         }
-        System.out.println("Delete Successful");
+        JOptionPane.showMessageDialog(null,"Successfully deleted "+
+                city_to_delete, "Test Connection",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     public boolean deleteByCity(String city_name) throws SQLException, Exception

@@ -35,11 +35,6 @@ public class AddEntry extends DataConnection {
                         null, "Failed to add new entry", "Insert",
                         JOptionPane.ERROR_MESSAGE);
             }
-            else{
-                JOptionPane.showMessageDialog(
-                        null, "Entry added successfully.", "Insert",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(
@@ -52,7 +47,9 @@ public class AddEntry extends DataConnection {
                     new_population);
             return;
         }
-        System.out.println("Insert complete");
+        JOptionPane.showMessageDialog(null,"Inserted city "+new_city+" with " +
+                "population of "+new_population+" into database.",
+                "Add City",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

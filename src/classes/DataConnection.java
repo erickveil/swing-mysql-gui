@@ -47,7 +47,8 @@ public class DataConnection implements Runnable{
             reportFatalException(e, "Connect");
             return;
         }
-        System.out.println("Database connected.");
+        JOptionPane.showMessageDialog(null,"Connection is good.",
+                "Test Connection",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

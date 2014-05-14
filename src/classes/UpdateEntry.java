@@ -34,11 +34,6 @@ public class UpdateEntry extends DataConnection {
                 throw new Exception("Failed to edit entry.\n" +
                         "City: "+city+" pop: "+pop);
             }
-            else{
-                JOptionPane.showMessageDialog(
-                        null, "Entry edited successfully.", "Edit",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
         }
         catch(Exception e){
             System.err.println("city: "+city+" pop: "+ pop + "return status: " +
@@ -46,7 +41,10 @@ public class UpdateEntry extends DataConnection {
             reportFatalException(e,"Edit");
             return;
         }
-        System.out.println("Insert complete");
+        JOptionPane.showMessageDialog(null,"Successfully updated "+city+
+                " population to "+pop,
+                "Test Connection",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
