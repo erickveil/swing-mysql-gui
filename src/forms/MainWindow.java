@@ -105,7 +105,6 @@ public class MainWindow {
     }
 
     /**
-     * todo: delete entry error box shows up empty
      * todo: successull commands should notify the user, not the command line.
      */
     private void deleteCity()

@@ -22,6 +22,7 @@ public class DeleteEntry extends DataConnection{
     public void run()
     {
         try{
+            connectDB();
             if(!deleteByCity(city_to_delete)){
                 JOptionPane.showMessageDialog(null,"Search for a city to " +
                         "delete first","Delete",JOptionPane.ERROR_MESSAGE);
