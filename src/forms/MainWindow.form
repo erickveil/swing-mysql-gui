@@ -222,7 +222,9 @@
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
-                <properties/>
+                <properties>
+                  <editable value="false"/>
+                </properties>
               </component>
               <component id="7b3a4" class="javax.swing.JButton" binding="bu_delete">
                 <constraints>

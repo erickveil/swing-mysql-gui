@@ -104,7 +104,6 @@ public class MainWindow {
     }
 
     /**
-     * todo: make delete field non-writable
      * todo: delete entry error box shows up empty
      * todo: search should write to delete field
      * todo: successull commands should notify the user, not the command line.
