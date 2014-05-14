@@ -1,5 +1,6 @@
 package classes;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -21,7 +22,11 @@ public class DeleteEntry extends DataConnection{
     public void run()
     {
         try{
-            deleteByCity(city_to_delete);
+            if(!deleteByCity(city_to_delete)){
+                JOptionPane.showMessageDialog(null,"Search for a city to " +
+                        "delete first","Delete",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
         catch(Exception e){
             reportFatalException(e,"Delete Entry");

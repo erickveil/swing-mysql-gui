@@ -104,7 +104,6 @@ public class MainWindow {
     }
 
     /**
-     * todo: delete button with no entries, pw or other "suceeds"
      * todo: make delete field non-writable
      * todo: delete entry error box shows up empty
      * todo: search should write to delete field
